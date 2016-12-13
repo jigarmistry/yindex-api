@@ -1,10 +1,5 @@
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from operator import itemgetter
-
-
-browser = webdriver.PhantomJS("/usr/local/lib/phantomjs/bin/phantomjs", service_args=[
-                              '--ssl-protocol=any', '--ignore-ssl-errors=true', '--load-images=no'])
+from . import browser
 
 
 def get_income_statement_wsj(country,stock,type):
@@ -13,9 +8,8 @@ def get_income_statement_wsj(country,stock,type):
 
     html_data = browser.find_element_by_class_name("cr_dataTable").get_attribute('innerHTML')
     table_data = [[cell.text for cell in row("td")] for row in BeautifulSoup(html_data, "lxml")("tr")]
-
-    json = {}
+    json_data = {}
     for i,v in enumerate(table_data):
-        if len[v] > 1 and v[1].strip() != "":
-            json[i] = v
-    return json
+        if len(v) > 1 and v[1].strip() != "":
+            json_data[i] = v
+    return json_data
