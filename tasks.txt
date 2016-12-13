@@ -1,0 +1,126 @@
+Scrape data from wsj,
+so that when user tap on the button ’Income satement’,’Cash flow’,’balance sheet’ and ‘company ownership’.
+Integrate the button below Market data page.
+
+It will dynamicly change according to the stock user search. Create the api.
+
+Notice this is only for one stock, replace the stock name with a variable will do.
+Here I am using supermax 7106 as example
+
+- Income Statement quarter(http://quotes.wsj.com/MY/7106/financials/quarter/income-statement)
+- Income Statement annual(http://quotes.wsj.com/MY/7106/financials/annual/income-statement)
+- Balance sheet quarter(http://quotes.wsj.com/MY/7106/financials/quarter/balance-sheet)
+- Balance sheet annual(http://quotes.wsj.com/MY/7106/financials/annual/balance-sheet)
+- Cash flow quarter(http://quotes.wsj.com/MY/7106/financials/annual/cash-flow)
+- Cash flow annual(http://quotes.wsj.com/MY/7106/financials/quarter/cash-flow)
+- Company & Ownership(http://quotes.wsj.com/MY/7106/company-people)
+
+There is a small blue chart on the far right. If unable to scrape, let me know.
+
+Add to Market Data box in Yahoo details page Only items below needed(depends how the page layout and space)
+- Next report
+- Last report
+- Fiscal yr End
+
+http://quotes.wsj.com/MY/7106/financials
+-Latest Dividend
+-Ex-Dividend date
+
+http://quotes.wsj.com/MY/7106
+Malaysia - MY
+Australia - AU
+Singapore - SG
+Thailand - TH
+Indonesia - ID
+
+
+2. Top 20 gainers,loser,gainers(%),loser(%) and volume
+Tap on the stocks in the list will lead to the stock details page that shows share price and market data. There is top volume/gainers/losers in the side menu.
+Singapore and Malaysia from shareinvestor.com
+Malaysia
+Top volume
+http://www.shareinvestor.com/prices/stock_prices.html?market=bursa#/?tab=counters&page=1&filter=DA02&type=ranking
+Top gainers
+http://www.shareinvestor.com/prices/stock_prices.html?market=bursa#/?tab=counters&page=1&filter=DA04&type=ranking
+Top losers
+http://www.shareinvestor.com/prices/stock_prices.html?market=bursa#/?tab=counters&page=1&filter=DA05&type=ranking
+Top gainers(%)
+http://www.shareinvestor.com/prices/stock_prices.html?market=bursa#/?tab=counters&page=1&filter=DA06&type=ranking
+Top losers(%)
+http://www.shareinvestor.com/prices/stock_prices.html?market=bursa#/?tab=counters&page=1&filter=DA07&type=ranking
+Singapore
+Top volume
+http://www.shareinvestor.com/prices/stock_prices.html?market=sgx#/?tab=counters&page=1&filter=DA02&type=ranking
+Top gainers
+http://www.shareinvestor.com/prices/stock_prices.html?market=sgx#/?tab=counters&page=1&filter=DA04&type=ranking
+Top losers
+http://www.shareinvestor.com/prices/stock_prices.html?market=sgx#/?tab=counters&page=1&filter=DA05&type=ranking
+Top gainers(%)
+http://www.shareinvestor.com/prices/stock_prices.html?market=sgx#/?tab=counters&page=1&filter=DA06&type=ranking
+Top losers(%)
+http://www.shareinvestor.com/prices/stock_prices.html?market=sgx#/?tab=counters&page=1&filter=DA07&type=ranking
+
+Australia
+Top volume
+https://au.finance.yahoo.com/actives?e=ax
+Top gainers(%)
+https://au.finance.yahoo.com/gainers?e=ax
+Top losers(%)
+https://au.finance.yahoo.com/losers?e=ax
+
+Indonesia
+Top volume
+https://sg.finance.yahoo.com/actives?e=JK
+Top gainers(%)
+https://sg.finance.yahoo.com/gainers?e=JK
+Top losers(%)
+https://sg.finance.yahoo.com/losers?e=JK
+
+Thailand
+Top volume, Top value, Top gainer, top loser
+http://marketdata.set.or.th/mkt/topten.do?market=SET&language=en&country=US&type=S
+
+
+3. Index, up,down or unchanged
+Create a page to shows the details below.
+Australia
+Up,down,unchaged, total volume
+https://au.finance.yahoo.com/advances
+index (get data for index,change,change%,open,day’s range ,52w range)
+https://au.finance.yahoo.com/q?s=%5EAXJO&ql=0
+chart
+http://chart.finance.yahoo.com/z?s=^AXJO&t=1d&q=l&l=on&z=m&a=vm&p=m50,m200,m20
+
+Indonesia
+Up,down,unchaged, total volume
+
+Index (get data for index,change,change%,open,day’s range ,52w range)
+https://sg.finance.yahoo.com/q?s=%5EJKSE&ql=0
+chart
+http://chart.finance.yahoo.com/z?s=^JKSE&t=1d&q=l&l=on&z=m&a=vm&p=m50,m200,m20
+Malaysia
+Up,down,unchanged,total volume
+http://www.shareinvestor.com/my?market=bursa
+Index (get data for index,change,change%,open,day’s range ,52w range)
+https://sg.finance.yahoo.com/q?s=%5EKLSE&ql=0
+chart
+http://chart.finance.yahoo.com/z?s=^KLSE&t=1d&q=l&l=on&z=m&a=vm&p=m50,m200,m20
+Singapore
+Up,down,unchanged,total volume
+http://www.shareinvestor.com/my?market=sgx
+Index (get data for index,change,change%,open,day’s range ,52w range)
+https://sg.finance.yahoo.com/q?s=%5ESTI&ql=0
+chart
+http://chart.finance.yahoo.com/z?s=^STI&t=1d&q=l&l=on&z=m&a=vm&p=m50,m200,m20
+
+Thailand
+Up,down,unchanged,Volume ('000 Shares)
+http://marketdata.set.or.th/mkt/marketsummary.do?language=en&country=US
+Index
+https://sg.finance.yahoo.com/q?s=%5ESET.BK&ql=0
+chart
+http://chart.finance.yahoo.com/z?s=^SET.BK&t=1d&q=l&l=on&z=m&a=vm&p=m50,m200,m20
+
+
+4. Need to create a web2py api to become alternative to YQL, when YQL is slow use web2py api.
+It will scrape data for yahoo finance (stocks) and warrant for (Singapore and Malaysia only) from share investor.
